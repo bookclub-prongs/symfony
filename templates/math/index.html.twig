@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MathController!{% endblock %}
+{% block title %}Hello Math::Calculator!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/app/src/Controller/MathController.php'|file_link(0) }}">src/Controller/MathController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/app/templates/math/index.html.twig'|file_link(0) }}">templates/math/index.html.twig</a></code></li>
-    </ul>
+    <h1>Hello and enjoy the equation below! ✅</h1>
+    {{ form(equation_form) }}
 </div>
 {% endblock %}
