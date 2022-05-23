@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use Twig\Environment;
+use App\Entity\Equation;
+use App\Form\EquationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,13 +16,13 @@ class MathController extends AbstractController
     /**
      * @Route("/math", name="app_math")
      */
-    public function index(Request $request): Response
+    public function index(Environment $twig)
     {
-
-
+        $equation = new Equation();
+        $form = $this->createForm(EquationFormType::class, $equation);
         return $this->render('math/index.html.twig', [
-            'controller_name' => 'MathController',
-        ]);
+            'equation_form' => $form->createView(),
+        ]); 
     }
 
     /**
