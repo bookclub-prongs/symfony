@@ -1,0 +1,4 @@
+name: demo
+recipe: symfony
+config:
+  webroot: public
