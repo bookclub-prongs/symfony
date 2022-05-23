@@ -21,7 +21,7 @@ class Equation
      * @var string
      * @Assert\NotBlank
      */
-    private $operand = [];
+    private $operator;
 
     /**
      * @var int
@@ -51,14 +51,14 @@ class Equation
         return $this;
     }
 
-    public function getOperand(): ?array
+    public function getOperator(): ?array
     {
-        return $this->operand;
+        return $this->operator;
     }
 
-    public function setOperand(array $operand): self
+    public function setOperator(string $operator): self
     {
-        $this->operand = $operand;
+        $this->operator = $operator;
 
         return $this;
     }

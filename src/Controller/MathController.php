@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Twig\Environment;
 use App\Entity\Equation;
+use App\Entity\Operator;
 use App\Form\EquationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MathController extends AbstractController
 {
+    
     /**
      * @Route("/math", name="app_math")
      */

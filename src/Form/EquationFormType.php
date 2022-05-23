@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Equation;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +14,14 @@ class EquationFormType extends AbstractType
     {
         $builder
             ->add('leftOperand')
-            ->add('operand')
+            ->add('operator', ChoiceType::class, [
+                'choices' => [
+                    '+' => '+',
+                    '-' => '-',
+                    '*' => '*',
+                    '/' => '/',
+                ]
+            ])
             ->add('rightOperand')
             ->add('result')
         ;
