@@ -15,6 +15,18 @@ class MathController extends AbstractController
      */
     public function index(Request $request): Response
     {
+
+
+        return $this->render('math/index.html.twig', [
+            'controller_name' => 'MathController',
+        ]);
+    }
+
+    /**
+     * @Route("/math/calculate", name="app_math")
+     */
+    public function calculate(Request $request): Response
+    {
         $left = $request->request->get('left');
         $right = $request->request->get('right');
         $operand = $request->request->get('op');
@@ -46,11 +58,7 @@ class MathController extends AbstractController
             default:
                 break;                                    
         }
-        //return $this->json(['result' => $message]);
-
-        return $this->render('math/index.html.twig', [
-            'controller_name' => 'MathController',
-        ]);
+        return $this->json(['result' => $message]);
     }
 }
 
