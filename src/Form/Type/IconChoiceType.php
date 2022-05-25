@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -8,6 +8,9 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * This is required to create a reusuability option for icon choice field.
+ */
 class IconChoiceType extends AbstractType
 {
     /**
@@ -16,13 +19,6 @@ class IconChoiceType extends AbstractType
      * @var array
      */
     private $choices;
-
-    private $kernelRootDir;
-
-    public function __construct($kernelRootDir)
-    {
-        $this->kernelRootDir = $kernelRootDir;
-    }
 
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -55,10 +51,15 @@ class IconChoiceType extends AbstractType
             // useful for multi-icon fields and sub-requests.
             return $this->choices;
         }
+        //dd($this->kernelRootDir . '/..');
 
-        // BTW we could configure the path to the "font-awesome.css".
-        $fontAwesome = file_get_contents($this->kernelRootDir.'/../web/assets/vendor/font-awesome/css/font-awesome.css');
-
+        $fullPath = dir(getcwd());
+        $directory = $fullPath->path . '/../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css';
+        if (file_exists($directory))
+        {
+            $fontAwesome = file_get_contents( $directory);
+        }
+        
         // this regular expression only works with uncompressed version (not works with "font-awesome.min.css")
         $pattern = '/\.(fa-(?:\w+(?:-)?)+):before\s+{\s*content:\s*"\\\\(.+)";\s+}/';
 
@@ -69,7 +70,6 @@ class IconChoiceType extends AbstractType
                 $this->choices['&#x'.$code.';'] = $class;
             }
         }
-
         return $this->choices;
 
     }
