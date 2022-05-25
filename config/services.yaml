@@ -22,3 +22,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    app.form.icon_choice_type:
+        class: AppBundle\Form\Type\ChoiceIconType
+        # Symfony has already a container parameter to the kernel root directory.
+        arguments: ['%kernel.root_dir%']
+        tags:
+            - { name: form.type }
