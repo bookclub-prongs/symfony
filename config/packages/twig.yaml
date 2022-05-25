@@ -1,6 +1,8 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
-    form_theme: ['bootstrap_4_horizontal_layout.html.twig']
+    form_theme: 
+        - 'bootstrap_4_horizontal_layout.html.twig'
+        - 'form/icon_choice_fields.html.twig'
 
 when@test:
     twig:
