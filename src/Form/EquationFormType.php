@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Equation;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Form\Type\IconChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,34 +14,34 @@ class EquationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $icons = [
-            // '&#xf8f5;' => '+', // alient
-            // '&#xf54c;' => '-', // skull
-            // '&#xf6e2;' => '*', // ghost
-            // '&#xe38b;' => '/'  // scream
+            // '&#xf8f5;' => '+', // alient: Paid options
+            // '&#xf54c;' => '-', // skull: Paid options
+            // '&#xf6e2;' => '*', // ghost: Paid options
+            // '&#xe38b;' => '/'  // scream: Paid options
             '&#xf281;' => '+', // alient
             '&#xf714;' => '-', // skull
             '&#xf6e2;' => '*', // ghost
             '&#xf0ac;' => '/'  // scream
         ];
-        //dd($icons);
-        
-        //$icons = array_flip(array_map('html_entity_decode',$icons));
-        //dd($icons);
-        // $builder
-        //     ->add('leftOperand')
-        //     ->add('operator', ChoiceType::class, [
-        //         'choices' => $icons
-        //     ])
-        //     ->add('rightOperand')
-        //     ->add('result')
-        // ;
         $builder
-            ->add('leftOperand')
+            ->add('leftOperand', TextType::class, [
+                'label' => '',
+                'help' => 'Left Operand',
+                'attr' => [
+                    'placeholder' => 'Int()'
+                ]
+            ])
             ->add('operator', IconChoiceType::class, [
                 'choices' => $icons,
                 'attr' => ['style' => "font-family: 'FontAwesome'"]
             ])
-            ->add('rightOperand')
+            ->add('rightOperand', TextType::class, [
+                'label' => '',
+                'help' => 'Right Operand',
+                'attr' => [
+                    'placeholder' => 'Int()'
+                ]
+            ])
             ->add('result')
         ;
     }

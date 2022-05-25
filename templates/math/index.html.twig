@@ -14,4 +14,10 @@
     <h1>Hello and enjoy the equation below! ✅</h1>
     {{ form(equation_form) }}
 </div>
+
+<script type="text/javascript">
+        $("#equation_form_operator").on('change', function(e) {
+            alert(this.val());
+        });
+    </script>
 {% endblock %}
