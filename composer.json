@@ -93,7 +93,8 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "console": "./bin/console"
     },
     "conflict": {
         "symfony/symfony": "*"
