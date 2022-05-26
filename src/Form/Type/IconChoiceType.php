@@ -33,7 +33,7 @@ class IconChoiceType extends AbstractType
             'attr' => [
                 // It's the key of the solution and can be done in many ways.
                 // Now, the rendered <select> element will have a new font.
-                'style' => "font-family: 'FontAwesome';"
+                'style' => "font-family: 'Font Awesome 6 Free';"
             ],
             'choices' => $this->getFontAwesomeIconChoices(),
         ]);

@@ -18,10 +18,10 @@ class EquationFormType extends AbstractType
             // '&#xf54c;' => '-', // skull: Paid options
             // '&#xf6e2;' => '*', // ghost: Paid options
             // '&#xe38b;' => '/'  // scream: Paid options
-            '&#xf281;' => '+', // alient
-            '&#xf714;' => '-', // skull
-            '&#xf6e2;' => '*', // ghost
-            '&#xf0ac;' => '/'  // scream
+            '&#xf281; Addition (+)' => '+', // alient
+            '&#xf714; Substraction (-)' => '-', // skull
+            '&#xf6e2; Multiplication (*)' => '*', // ghost
+            '&#xf0ac; Division (/)' => '/'  // scream
         ];
         $builder
             ->add('leftOperand', TextType::class, [
@@ -33,7 +33,7 @@ class EquationFormType extends AbstractType
             ])
             ->add('operator', IconChoiceType::class, [
                 'choices' => $icons,
-                'attr' => ['style' => "font-family: 'FontAwesome'"]
+                'attr' => ['style' => "font-family: 'Font Awesome 6 Free'"]
             ])
             ->add('rightOperand', TextType::class, [
                 'label' => '',

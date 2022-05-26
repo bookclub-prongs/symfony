@@ -13,4 +13,9 @@ import './bootstrap';
 
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
-
+require('@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf');
+require('@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2');
+require('@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf');
+require('@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2');
+require('@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf');
+require('@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2');
