@@ -89,7 +89,7 @@ yarn watch
 ```
 Build dev public assets
 ```sh
-gulp dev
+yarn dev
 ```
 
 #### Building for source (Approach)
