@@ -7,7 +7,6 @@
         }
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-        select, option { font-family: 'FontAwesome'}
     </style>
 {% endblock %}
 
@@ -20,12 +19,61 @@
         {{ form(equation_form) }}
     </div>
 {% endblock %}
+
+
 {% block javascripts %}
-{{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    
+    {{ parent() }}
+    <script>
+        {{ encore_entry_script_tags('app') }}
+        
+        const routeDefault = "{{ path('app_math')|escape('js') }}";
+        const routeCalculate = "{{ path('app_math_calculate')|escape('js') }}";
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        console.log(routeDefault);
+        console.log(routeCalculate);
 
-<script>
-    const route = "{{ path('app_math')|escape('js') }}";
-</script>
+        var equationForm = $('form[id="equation_form"]');
+
+        function validate() {
+            var leftVal = $('#equation_form_leftOperand').val();
+            var leftIsInteger = Number.isInteger(parseInt(leftVal));
+            var rightVal = $('#equation_form_rightOperand').val();
+            var rightIsInteger = Number.isInteger(parseInt(rightVal));
+            var op = $('#equation_form_operator').val();
+
+            if (leftIsInteger && rightIsInteger) {
+                var data = {
+                    left: leftVal,
+                    right: rightVal,
+                    op: op
+                };
+                console.log(data);
+
+                $.ajax({
+                    type: "POST",
+                    url: routeCalculate,
+                    data: data,
+                    success: function (data) {
+                        console.log(data);
+                        $('#equation_form_result').val(data['result']);
+                    },
+                });
+            }
+            else {
+                console.log('validation failed');
+            }
+        }
+        $(document).ready(function () {
+            validate();
+            $('#equation_form_operator').on('change', function(e){
+                validate();
+            });
+            $("input").change(function(){
+                validate();
+            });
+        });
+    </script>
 {% endblock %}

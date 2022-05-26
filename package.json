@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@symfony/webpack-encore": "^2.1.0",
-    "core-js": "^3.22.7"
+    "core-js": "^3.22.7",
+    "jquery": "^3.6.0",
+    "jquery-validation": "^1.19.4"
   }
 }

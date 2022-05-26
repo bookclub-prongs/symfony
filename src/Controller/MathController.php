@@ -28,7 +28,7 @@ class MathController extends AbstractController
     }
 
     /**
-     * @Route("/math/calculate", name="app_math")
+     * @Route("/math/calculate", name="app_math_calculate")
      */
     public function calculate(Request $request): Response
     {

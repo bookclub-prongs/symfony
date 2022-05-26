@@ -26,7 +26,7 @@ class EquationFormType extends AbstractType
         $builder
             ->add('leftOperand', TextType::class, [
                 'label' => '',
-                'help' => 'Left Operand',
+                'help' => '',
                 'attr' => [
                     'placeholder' => 'Int()'
                 ]
@@ -37,12 +37,19 @@ class EquationFormType extends AbstractType
             ])
             ->add('rightOperand', TextType::class, [
                 'label' => '',
-                'help' => 'Right Operand',
+                'help' => '',
                 'attr' => [
                     'placeholder' => 'Int()'
                 ]
             ])
-            ->add('result')
+            ->add('result', TextType::class, [
+                'label' => '',
+                'help' => '',
+                'attr' => [
+                    'placeholder' => 'Your result',
+                    'readonly' => true,
+                ]
+            ])
         ;
     }
 
