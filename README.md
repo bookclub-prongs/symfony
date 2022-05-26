@@ -106,6 +106,9 @@ gulp dev
 MIT
 
 **Free Software, Hell Yeah!**
+
+[//]: # (This is a line break)
+
    [zahid]: <https://github.com/mzahidur>
    [git-repo-url]: <https://github.com/bookclub-prongs/symfony/tree/zahid-lando>
    [VS Code]: <https://code.visualstudio.com/>
